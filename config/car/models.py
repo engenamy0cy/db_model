@@ -14,18 +14,18 @@ class Color(models.Model):
         return self.name
     
 class Car(models.Model):
-    name = models.CharField(max_length=100)
-    create_at = models.DateTimeField(auto_now_add=True)
-    company = models.ForeignKey(Company, on_delete = models.CASCADE, verbose_name="компания производитель") #изменить
-    color = models.ForeignKey(Color, on_delete = models.PROTECT,verbose_name = "цвет", related_name="cars") #изменить, досуп получения обратной связи color.cars.all()
-    engine = models.CharField(max_length=100) #choise
-    passengers_people = models.PositiveIntegerField() #50/50
-    type_engine = models.CharField(max_length=100) #choise
-    trunk = models.PositiveIntegerField() #50/50
-    type_akp = models.CharField(max_length=10)
-    model = models.CharField(max_length=100)
-    type_wheel = models.CharField(max_length=100)
-    wheels = models.PositiveIntegerField()
-    type_complection = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10,decimal_places=2)
+    name = models.CharField(max_length=100,null=True)
+    create_at = models.DateTimeField(auto_now_add=True,null=True)
+    company = models.ForeignKey(Company,on_delete=models.CASCADE,verbose_name="компания производитель",null=True) #изменить
+    color = models.ForeignKey(Color,on_delete=models.PROTECT,verbose_name="цвет",related_name="cars",null=True)  #доступ получения обратной связи color.cars.all()
+    engine = models.CharField(max_length=100,null=True) #choise/
+    passengers_people = models.PositiveIntegerField(null=True) #50/50
+    type_engine = models.CharField(max_length=100,null=True) #choise/
+    trunk = models.PositiveIntegerField(null=True) #50/50
+    type_akp = models.CharField(max_length=10,null=True) #choise
+    model = models.CharField(max_length=100,null=True)  #изменить
+    type_wheel = models.CharField(max_length=10,null=True) #choise
+    wheels = models.PositiveIntegerField(null=True)  #choise/
+    type_complection = models.CharField(null=True) #choise
+    price = models.DecimalField(max_digits=10,decimal_places=2,null=True)
 
